@@ -1,0 +1,17 @@
+# Load impression data
+curl -X POST http://localhost:8080/api/impressions/load \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@impressions.json"
+
+# Load click events data
+curl -X POST http://localhost:8080/api/click-events/load \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@clicks.json"
+
+# Calculate metrics for some dimensions
+curl -X GET http://localhost:8080/api/analytic/calculate \
+  -H "Accept: application/json"
+
+# Calculate top advertisers
+curl -X GET http://localhost:8080/api/analytic/top-advertiser \
+  -H "Accept: application/json"
