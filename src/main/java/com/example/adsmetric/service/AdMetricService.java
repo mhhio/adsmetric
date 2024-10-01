@@ -22,6 +22,11 @@ public class AdMetricService {
     private final ClickEventRepository clickEventRepository;
 
 
+    /**
+     * calculate metrics based on app and country dimensions
+     *
+     * @return List of AdMetricOutputObject
+     */
     public List<AdMetricOutputObject> calculate() {
         List<ImpressionEntity> impressions = impressionRepository.findAll();
         List<ClickEventEntity> clickEvents = clickEventRepository.findAll();
@@ -73,6 +78,11 @@ public class AdMetricService {
                 .build();
     }
 
+    /**
+     * get list of top 5 advertisers for each app based on country
+     *
+     * @return List of TopAdvertiserOutputObject
+     */
     public List<TopAdvertiserOutputObject> topAdvertisers() {
         List<ImpressionEntity> impressions = impressionRepository.findAll();
         List<ClickEventEntity> clickEvents = clickEventRepository.findAll();

@@ -25,7 +25,7 @@ public class FileLoaderService {
     private final ClickEventRepository clickEventRepository;
     private final ObjectMapper objectMapper;
 
-    public void loadImpressions(String jsonContent) {
+    public List<ImpressionEntity> loadImpressions(String jsonContent) {
         try {
             List<Map<String, Object>> rawData = objectMapper.readValue(jsonContent, new TypeReference<List<Map<String, Object>>>() {
             });
@@ -33,13 +33,13 @@ public class FileLoaderService {
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .collect(Collectors.toList());
-            impressionRepository.saveAll(impressionEntityList);
+            return impressionRepository.saveAll(impressionEntityList);
         } catch (JsonProcessingException e) {
             throw new InvalidJsonException(e);
         }
     }
 
-    public void loadClickEvents(String jsonContent) {
+    public List<ClickEventEntity> loadClickEvents(String jsonContent) {
         try {
             List<Map<String, Object>> rawData = objectMapper.readValue(jsonContent, new TypeReference<List<Map<String, Object>>>() {
             });
@@ -47,7 +47,7 @@ public class FileLoaderService {
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .collect(Collectors.toList());
-            clickEventRepository.saveAll(clickEventsEntityList);
+            return clickEventRepository.saveAll(clickEventsEntityList);
         } catch (JsonProcessingException e) {
             throw new InvalidJsonException(e);
         }
