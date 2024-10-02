@@ -19,8 +19,8 @@ This project is a Spring Boot 3 application that provides an API for ad metrics.
 
 ### Clone the repository
 ```bash
-git clone https://github.com/yourusername/ad-metrics-api.git
-cd ad-metrics-api
+git clone https://github.com/mhhio/adsmetric.git
+cd adsmetric
 ```
 
 ### Build the application
